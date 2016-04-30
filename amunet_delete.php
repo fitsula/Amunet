@@ -31,5 +31,5 @@ $conn->close();
 ?>
 
 <script language="JavaScript" type="text/javascript">
-location="admin.php"; 
+location="amunet_admin.php"; 
 </script>
