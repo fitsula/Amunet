@@ -22,4 +22,8 @@ body {
     position: relative;
     bottom: 2px;
 }
+
+.ip-white { /* for white ip on ip list page */
+    background-color: #fbfff0;
+}
 /* END BOOTSTRAP THEME   */

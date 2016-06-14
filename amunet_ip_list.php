@@ -1,4 +1,4 @@
-<!DOCTYPE html> 
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8">
@@ -28,8 +28,8 @@ include "amunet_config.php";
         </div>
         <div id="navbar" class="collapse navbar-collapse">
             <ul class="nav navbar-nav">
-                <li class="active"><a href="amunet_admin.php">Log <span class="badge"><?php echo $logCount; ?></span></a></li>
-                <li><a href="amunet_ip_list.php">List</a></li>
+                <li><a href="amunet_admin.php">Log</a></li>
+                <li class="active"><a href="amunet_ip_list.php">List</a></li>
             </ul>
         </div><!--/.nav-collapse -->
     </div>
@@ -38,26 +38,30 @@ include "amunet_config.php";
 <div class="container theme-showcase">
 
     <div class="page-header">
-        <h1>Log</h1>
+        <h1>IP List</h1>
     </div>
 
     <?php
 
         $conn = new mysqli($dbServername, $dbUsername, $dbUserpass, $dbName);
-        $sql = "SELECT ip, datetime, id FROM log";
+        $sql = "SELECT id, ip, name, white FROM ip";
         $result = $conn->query($sql);
 
         if ($result->num_rows > 0) {
-            echo "<table class=\"table\"><tr><th>ip</th><th>datetime</th><th>del <a href=\"amunet_delete.php?white=true\" class=\"label label-danger\">[white]</a></th></tr>";
+            echo "<table class=\"table\"><tr><th>id</th><th>ip</th><th>name</th><th>white</th></tr>";
             while($row = $result->fetch_assoc()) {
-                echo "<tr><td>".$row["ip"]."</td><td>".$row["datetime"]."</td><td><a href=\"amunet_delete.php?id=".$row["id"]."\" class=\"label label-danger\">[one]</a> <a href=\"amunet_delete.php?ip=".$row["ip"]."\" class=\"label label-danger\">[all]</a></td></tr>";
+                if($row["white"] == 1) {
+                echo "<tr class=\"ip-white\"><td>".$row["id"]."</td><td>".$row["ip"]."</td><td>".$row["name"]."</td><td>".$row["white"]."</td></tr>";
+                } else {
+                echo "<tr><td>".$row["id"]."</td><td>".$row["ip"]."</td><td>".$row["name"]."</td><td>".$row["white"]."</td></tr>";
+                }
             }
             echo "</table>";
         } else {
             echo "0 results";
         }
 
-    $conn->close();
+        $conn->close();
 
     ?>
 

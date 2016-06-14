@@ -20,6 +20,6 @@ $admLock = false;
 
 // Use ip lock for panel?
 $admIPlock = false;
-$admIPs = "127.0.0.1"; // only this IP can enter the admin panel
+$admIPs = array("127.0.0.1", "192.168.1.100"); // only this IP can enter the admin panel
 
 ?>
