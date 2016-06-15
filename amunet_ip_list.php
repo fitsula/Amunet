@@ -51,9 +51,9 @@ include "amunet_config.php";
             echo "<table class=\"table\"><tr><th>id</th><th>ip</th><th>name</th><th>white</th></tr>";
             while($row = $result->fetch_assoc()) {
                 if($row["white"] == 1) {
-                echo "<tr class=\"ip-white\"><td>".$row["id"]."</td><td>".$row["ip"]."</td><td>".$row["name"]."</td><td>".$row["white"]."</td></tr>";
+                    echo "<tr class=\"ip-white\"><td>".$row["id"]."</td><td>".$row["ip"]."</td><td>".$row["name"]."</td><td>".$row["white"]."</td></tr>";
                 } else {
-                echo "<tr><td>".$row["id"]."</td><td>".$row["ip"]."</td><td>".$row["name"]."</td><td>".$row["white"]."</td></tr>";
+                    echo "<tr><td>".$row["id"]."</td><td>".$row["ip"]."</td><td>".$row["name"]."</td><td>".$row["white"]."</td></tr>";
                 }
             }
             echo "</table>";
